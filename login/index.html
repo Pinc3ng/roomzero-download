@@ -49,7 +49,7 @@
       expired: "Link login ini sudah kedaluwarsa. Ulangi dari game.", used: "Link login ini sudah dipakai. Ulangi dari game.",
       under_13: "Akun ini tidak bisa dipakai: akun ROOMZERO hanya untuk pemain berumur 13 tahun ke atas.",
       missing: "Buka halaman ini dari game (tombol Masuk).", not_configured: "Login belum disiapkan di server. Coba lagi nanti.",
-      tiktok_off: "Login TikTok belum aktif.", error: "Gagal masuk. Coba lagi.", other: "English",
+      tiktok_off: "Login TikTok belum aktif.", off: "Belum tersedia", error: "Gagal masuk. Coba lagi.", other: "English",
     },
     en: {
       title: "Sign in to ROOMZERO", lead: "Choose an account to sign in. Other players only see the username and picture you choose.",
@@ -59,7 +59,7 @@
       expired: "This sign-in link has expired. Start again from the game.", used: "This sign-in link was already used. Start again from the game.",
       under_13: "This account can't be used: ROOMZERO accounts are for players aged 13 and over.",
       missing: "Open this page from the game (Sign in).", not_configured: "Sign-in isn't set up on the server yet. Please try again later.",
-      tiktok_off: "TikTok sign-in isn't available yet.", error: "Sign-in failed. Please try again.", other: "Bahasa Indonesia",
+      tiktok_off: "TikTok sign-in isn't available yet.", off: "Not available yet", error: "Sign-in failed. Please try again.", other: "Bahasa Indonesia",
     },
   };
   const q = new URLSearchParams(location.search);
@@ -87,7 +87,7 @@
     const s = document.createElement("strong"); s.textContent = title; msg.append(s);
     if (sub) msg.append(document.createTextNode(sub));
   };
-  const lock = (on) => document.querySelectorAll(".provider").forEach((b) => (b.disabled = on));
+  const lock = (on) => document.querySelectorAll(".provider").forEach((b) => (b.disabled = on || (window.__rzOn && !window.__rzOn[b.dataset.provider])));
   const errorText = (code) => ({ login_expired: t("expired"), login_used: t("used"), under_13: t("under_13"),
     accounts_not_configured: t("not_configured"), tiktok_not_configured: t("tiktok_off") })[code] || t("error");
 
@@ -109,8 +109,21 @@
   if (!sid) { lock(true); show("err", t("missing")); return; }
 
   let supa = null;
-  const config = call("GET", "/config").then((c) => {
-    if (!c.tiktok) document.querySelector('[data-provider="tiktok"]').disabled = true;
+  // Buttons for providers that aren't set up yet stay off (Supabase Auth tells which ones are enabled).
+  const providerOn = { google: true, facebook: true, tiktok: true };
+  window.__rzOn = providerOn;
+  const syncButtons = () => document.querySelectorAll(".provider").forEach((b) => {
+    b.disabled = !providerOn[b.dataset.provider];
+    b.title = b.disabled ? t("off") : "";
+  });
+  const config = call("GET", "/config").then(async (c) => {
+    providerOn.tiktok = !!c.tiktok;
+    try {
+      const s = await fetch(c.supabase_url + "/auth/v1/settings", { headers: { apikey: c.anon_key } }).then((r) => r.json());
+      providerOn.google = !!(s.external && s.external.google);
+      providerOn.facebook = !!(s.external && s.external.facebook);
+    } catch {}
+    syncButtons();
     supa = supabase.createClient(c.supabase_url, c.anon_key, { auth: { flowType: "pkce", detectSessionInUrl: true, persistSession: true } });
     return c;
   });
