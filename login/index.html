@@ -74,7 +74,7 @@
     document.querySelectorAll("[data-t]").forEach((el) => (el.textContent = t(el.dataset.t)));
     document.querySelectorAll("[data-keep-lang]").forEach((a) => (a.href = a.getAttribute("href").split("?")[0] + "?lang=" + lang));
     document.getElementById("switchLang").textContent = t("other");
-    document.title = t("title").replace("ROOMZERO", "").trim() + " · ROOMZERO";
+    document.title = (lang === "en" ? "Sign in" : "Masuk") + " · ROOMZERO";
   };
   document.getElementById("switchLang").addEventListener("click", (e) => { e.preventDefault(); lang = lang === "en" ? "id" : "en"; store.set("rz_lang", lang); apply(); });
   apply();
