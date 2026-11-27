@@ -124,7 +124,7 @@
 
   // ---------- Section titles and small copy reveal on scroll ----------
   document.querySelectorAll("[data-split]").forEach((el) => {
-    const s = new SplitText(el, { type: "chars", charsClass: "char" });
+    const s = new SplitText(el, { type: "words,chars", wordsClass: "word", charsClass: "char" });
     gsap.from(s.chars, { yPercent: 100, opacity: 0, duration: 0.8, ease: "power4.out", stagger: 0.03,
       scrollTrigger: { trigger: el, start: "top 85%" } });
   });

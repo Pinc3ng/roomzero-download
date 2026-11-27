@@ -144,3 +144,13 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .hero-grain, .scroll-cue span { animation: none; }
 }
+
+/* Split titles: keep each word whole when lines wrap. */
+.section-title .word { display: inline-block; white-space: nowrap; }
+.section-title .char { display: inline-block; }
+.qr .section-title { font-size: clamp(40px, 5.4vw, 76px); }
+/* Pinned creatures: room for the fixed nav above the title. */
+@media (min-width: 901px) {
+  .creatures { padding-top: 40px; }
+  .creatures-pin { padding-top: 96px; min-height: 100vh; }
+}
