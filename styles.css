@@ -65,7 +65,7 @@ a { color: inherit; }
 }
 @keyframes grain { 0%{transform:translate(0,0)} 20%{transform:translate(-3%,2%)} 40%{transform:translate(2%,-3%)} 60%{transform:translate(-2%,-1%)} 80%{transform:translate(3%,3%)} 100%{transform:translate(0,0)} }
 .hero-content { position: relative; z-index: 2; width: min(1160px, 100% - 40px); margin: 0 auto; padding: 0 0 12vh; }
-.hero-title { margin: 0; font: 600 clamp(72px, 15vw, 220px)/.85 var(--display); letter-spacing: .03em; text-transform: uppercase; }
+.hero-title { margin: 0; white-space: nowrap; font: 600 clamp(52px, 16.5vw, 220px)/.85 var(--display); letter-spacing: .03em; text-transform: uppercase; }
 .hero-title .char { display: inline-block; }
 .hero-sub { max-width: 560px; margin: 22px 0 32px; font-size: 18px; color: var(--fog); }
 .hero-sub b { color: var(--bone); font-weight: 600; }
