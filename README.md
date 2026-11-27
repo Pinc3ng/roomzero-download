@@ -19,4 +19,4 @@ Scan to open the page on a phone:
 The builds are updated automatically whenever the game changes. This repository only holds the download page;
 the game's source code is private.
 
-Created by Vincent, Leonardo Angkasa and Giliant Chandra. Fonts: Oswald and Inter (SIL Open Font License, see `assets/`).
+Created by Vincent, Leonardo Angkasa and Giliant Chandra. Fonts: Archivo, IBM Plex Sans and IBM Plex Mono (SIL Open Font License, Google Fonts).
