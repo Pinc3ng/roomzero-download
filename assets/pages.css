@@ -1,0 +1,36 @@
+/* Shared look for the small account pages (login, privacy, terms): same ground, type and amber as the site. */
+:root {
+  --ground: #0a0e0f; --ground-2: #10171a; --rule: #1f2a2d; --text: #d8dfdc; --dim: #7f8d8b; --sodium: #e3a548;
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body: "Instrument Sans", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ground); color: var(--text); font: 400 16px/1.65 var(--body); -webkit-font-smoothing: antialiased; }
+a { color: var(--text); text-decoration-color: var(--sodium); text-underline-offset: 3px; }
+:focus-visible { outline: 1px solid var(--sodium); outline-offset: 3px; }
+.page { width: min(640px, 100%); margin: 0 auto; padding: calc(env(safe-area-inset-top, 0px) + 48px) max(24px, env(safe-area-inset-right, 0px)) 64px max(24px, env(safe-area-inset-left, 0px)); }
+.mark { display: inline-block; margin-bottom: 40px; font: 600 19px/1 var(--display); letter-spacing: .08em; text-decoration: none; }
+h1 { margin: 0 0 12px; font: 400 clamp(40px, 8vw, 60px)/1 var(--display); }
+h2 { margin: 36px 0 8px; font: 400 28px/1.1 var(--display); }
+p, li { color: var(--dim); }
+p b, li b { color: var(--text); font-weight: 500; }
+ul { padding-left: 20px; }
+li + li { margin-top: 8px; }
+.lead { font-size: 17px; margin: 0 0 32px; }
+.providers { display: grid; gap: 12px; }
+.provider {
+  display: flex; align-items: center; gap: 14px; width: 100%; padding: 16px 20px; border: 1px solid var(--rule); border-radius: 10px;
+  background: var(--ground-2); color: var(--text); font: 500 16px/1 var(--body); cursor: pointer; text-align: left;
+  transition: border-color .2s, background .2s;
+}
+.provider:hover { border-color: var(--sodium); }
+.provider:disabled { opacity: .45; cursor: default; border-color: var(--rule); }
+.provider svg { width: 22px; height: 22px; flex: none; }
+.small { margin-top: 24px; font-size: 13px; }
+.msg { margin-top: 24px; padding: 16px 18px; border-radius: 10px; background: var(--ground-2); color: var(--text); }
+.msg[hidden] { display: none; }
+.msg.ok { border-left: 3px solid var(--sodium); }
+.msg.err { border-left: 3px solid #c0564b; }
+.msg strong { display: block; font: 400 26px/1.1 var(--display); margin-bottom: 4px; }
+.lang { margin-top: 40px; font-size: 13px; color: var(--dim); }

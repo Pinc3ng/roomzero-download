@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Masuk · ROOMZERO</title>
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Instrument+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/pages.css?v=1">
+</head>
+<body>
+<main class="page">
+  <a class="mark" href="../">ROOMZERO</a>
+  <h1 data-t="title">Masuk ke ROOMZERO</h1>
+  <p class="lead" data-t="lead">Pilih akun untuk masuk. Pemain lain hanya melihat username dan foto yang kamu pilih.</p>
+
+  <div class="providers" id="providers">
+    <button class="provider" type="button" data-provider="google">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#EA4335" d="M12 10.2v3.9h5.4c-.2 1.3-1.6 3.8-5.4 3.8-3.2 0-5.9-2.7-5.9-6s2.7-6 5.9-6c1.9 0 3.1.8 3.8 1.5l2.6-2.5C16.8 3.4 14.6 2.4 12 2.4 6.7 2.4 2.4 6.7 2.4 12s4.3 9.6 9.6 9.6c5.5 0 9.2-3.9 9.2-9.4 0-.6-.1-1.1-.2-1.6H12z"/></svg>
+      <span data-t="google">Masuk dengan Google</span>
+    </button>
+    <button class="provider" type="button" data-provider="facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#1877F2" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></svg>
+      <span data-t="facebook">Masuk dengan Facebook</span>
+    </button>
+    <button class="provider" type="button" data-provider="tiktok">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.4 7.4 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5z"/></svg>
+      <span data-t="tiktok">Masuk dengan TikTok</span>
+    </button>
+  </div>
+
+  <div class="msg" id="msg" hidden></div>
+
+  <p class="small"><span data-t="agree">Dengan melanjutkan, kamu menyetujui</span> <a href="../terms/" data-keep-lang target="_blank" data-t="terms">Ketentuan</a> <span data-t="and">dan</span> <a href="../privacy/" data-keep-lang target="_blank" data-t="privacy">Kebijakan Privasi</a>.</p>
+  <p class="lang"><a href="#" id="switchLang">English</a></p>
+</main>
+
+<script src="../assets/account-config.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js"></script>
+<script>
+(() => {
+  const T = {
+    id: {
+      title: "Masuk ke ROOMZERO", lead: "Pilih akun untuk masuk. Pemain lain hanya melihat username dan foto yang kamu pilih.",
+      google: "Masuk dengan Google", facebook: "Masuk dengan Facebook", tiktok: "Masuk dengan TikTok",
+      agree: "Dengan melanjutkan, kamu menyetujui", terms: "Ketentuan", and: "dan", privacy: "Kebijakan Privasi",
+      working: "Sedang masuk…", done: "Berhasil masuk!", done_sub: "Kembali ke ROOMZERO. Tab ini boleh ditutup.",
+      expired: "Link login ini sudah kedaluwarsa. Ulangi dari game.", used: "Link login ini sudah dipakai. Ulangi dari game.",
+      under_13: "Akun ini tidak bisa dipakai: akun ROOMZERO hanya untuk pemain berumur 13 tahun ke atas.",
+      missing: "Buka halaman ini dari game (tombol Masuk).", not_configured: "Login belum disiapkan di server. Coba lagi nanti.",
+      tiktok_off: "Login TikTok belum aktif.", error: "Gagal masuk. Coba lagi.", other: "English",
+    },
+    en: {
+      title: "Sign in to ROOMZERO", lead: "Choose an account to sign in. Other players only see the username and picture you choose.",
+      google: "Continue with Google", facebook: "Continue with Facebook", tiktok: "Continue with TikTok",
+      agree: "By continuing you agree to the", terms: "Terms", and: "and", privacy: "Privacy Policy",
+      working: "Signing you in…", done: "You're signed in!", done_sub: "Go back to ROOMZERO. You can close this tab.",
+      expired: "This sign-in link has expired. Start again from the game.", used: "This sign-in link was already used. Start again from the game.",
+      under_13: "This account can't be used: ROOMZERO accounts are for players aged 13 and over.",
+      missing: "Open this page from the game (Sign in).", not_configured: "Sign-in isn't set up on the server yet. Please try again later.",
+      tiktok_off: "TikTok sign-in isn't available yet.", error: "Sign-in failed. Please try again.", other: "Bahasa Indonesia",
+    },
+  };
+  const q = new URLSearchParams(location.search);
+  const store = { get: (k) => { try { return sessionStorage.getItem(k) || ""; } catch { return ""; } },
+                  set: (k, v) => { try { sessionStorage.setItem(k, v); } catch {} } };
+  let lang = q.get("lang") || store.get("rz_lang") || (navigator.language || "id").slice(0, 2);
+  lang = lang === "en" ? "en" : "id";
+  store.set("rz_lang", lang);
+  const t = (k) => T[lang][k] || k;
+  const apply = () => {
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-t]").forEach((el) => (el.textContent = t(el.dataset.t)));
+    document.querySelectorAll("[data-keep-lang]").forEach((a) => (a.href = a.getAttribute("href").split("?")[0] + "?lang=" + lang));
+    document.getElementById("switchLang").textContent = t("other");
+    document.title = t("title").replace("ROOMZERO", "").trim() + " · ROOMZERO";
+  };
+  document.getElementById("switchLang").addEventListener("click", (e) => { e.preventDefault(); lang = lang === "en" ? "id" : "en"; store.set("rz_lang", lang); apply(); });
+  apply();
+
+  const msg = document.getElementById("msg");
+  const show = (kind, title, sub = "") => {
+    msg.hidden = false;
+    msg.className = "msg " + kind;
+    msg.innerHTML = "";
+    const s = document.createElement("strong"); s.textContent = title; msg.append(s);
+    if (sub) msg.append(document.createTextNode(sub));
+  };
+  const lock = (on) => document.querySelectorAll(".provider").forEach((b) => (b.disabled = on));
+  const errorText = (code) => ({ login_expired: t("expired"), login_used: t("used"), under_13: t("under_13"),
+    accounts_not_configured: t("not_configured"), tiktok_not_configured: t("tiktok_off") })[code] || t("error");
+
+  const API = (window.RZ_API || "").replace(/\/+$/, "") + "/api";
+  const call = async (method, path, payload) => {
+    const r = await fetch(API + path, { method, headers: { "Content-Type": "application/json" }, body: payload ? JSON.stringify(payload) : undefined });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.error || "error");
+    return d;
+  };
+  const finished = () => { lock(true); show("ok", t("done"), t("done_sub")); history.replaceState(null, "", location.pathname); };
+  const failed = (e) => { lock(false); show("err", errorText(String(e && e.message))); };
+
+  // The sid comes from the game's link; it survives the provider's round trip in the URL and this tab's storage.
+  const state = q.get("state") || "";
+  const sid = q.get("sid") || (state.includes(".") ? state.split(".")[0] : "") || store.get("rz_sid");
+  if (sid) store.set("rz_sid", sid);
+  if (!window.RZ_API) { lock(true); show("err", t("not_configured")); return; }
+  if (!sid) { lock(true); show("err", t("missing")); return; }
+
+  let supa = null;
+  const config = call("GET", "/config").then((c) => {
+    if (!c.tiktok) document.querySelector('[data-provider="tiktok"]').disabled = true;
+    supa = supabase.createClient(c.supabase_url, c.anon_key, { auth: { flowType: "pkce", detectSessionInUrl: true, persistSession: true } });
+    return c;
+  });
+
+  document.querySelectorAll(".provider").forEach((btn) => btn.addEventListener("click", async () => {
+    lock(true);
+    show("ok", t("working"));
+    try {
+      await config;
+      if (btn.dataset.provider === "tiktok") {
+        const d = await call("GET", "/auth/tiktok/url?sid=" + encodeURIComponent(sid));
+        location.href = d.url;
+        return;
+      }
+      store.set("rz_provider", btn.dataset.provider);
+      const { error } = await supa.auth.signInWithOAuth({
+        provider: btn.dataset.provider,
+        options: { redirectTo: location.origin + location.pathname + "?sid=" + encodeURIComponent(sid) + "&lang=" + lang },
+      });
+      if (error) throw error;
+    } catch (e) { failed(e); }
+  }));
+
+  // Back from a provider.
+  (async () => {
+    try {
+      if (q.get("error") || q.get("error_description")) throw new Error("error");
+      if (q.get("code") && state.includes(".")) {          // TikTok
+        lock(true); show("ok", t("working"));
+        await call("POST", "/auth/tiktok", { sid, code: q.get("code"), state });
+        finished();
+        return;
+      }
+      if (q.get("code")) {                                   // Google / Facebook through Supabase Auth
+        lock(true); show("ok", t("working"));
+        await config;
+        let session = (await supa.auth.getSession()).data.session;
+        if (!session) {
+          const ex = await supa.auth.exchangeCodeForSession(q.get("code"));
+          if (ex.error) throw ex.error;
+          session = ex.data.session;
+        }
+        await call("POST", "/auth/supabase", { sid, access_token: session.access_token });
+        await supa.auth.signOut({ scope: "local" });          // the game has its own session; nothing stays in this browser
+        finished();
+      }
+    } catch (e) { failed(e); }
+  })();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ketentuan Penggunaan · ROOMZERO</title>
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Instrument+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/pages.css?v=1">
+</head>
+<body>
+<main class="page">
+  <a class="mark" href="../">ROOMZERO</a>
+  <article lang="id" data-lang="id">
+    <h1>Ketentuan Penggunaan</h1>
+    <p>Versi 1 · terakhir diperbarui 27 November 2026</p>
+    <ul>
+      <li>Kamu harus berumur 13 tahun ke atas untuk punya akun ROOMZERO, dan tanggal lahir yang diisi harus benar.</li>
+      <li>Satu orang, satu akun. Biarkan akunmu tetap masuk hanya di perangkat yang kamu percaya.</li>
+      <li>Username hanya bisa dipilih sekali dan tidak bisa diganti. Username yang sudah dipakai pemain lain tidak bisa dipakai lagi.</li>
+      <li>Username dan foto profil tidak boleh kasar, berisi kebencian, berbau seksual, atau menyamar sebagai orang lain atau tim ROOMZERO. Kami bisa menghapus akun seperti itu.</li>
+      <li>Jangan curang, mengganggu pemain lain, atau menyerang dan membebani server.</li>
+      <li>ROOMZERO gratis dan diberikan apa adanya. Fitur online, save di cloud, dan server bisa berubah atau berhenti.</li>
+      <li>Kamu bisa berhenti memakai ROOMZERO dan menghapus akun kapan saja.</li>
+      <li>Lihat <a href="../privacy/?lang=id">Kebijakan Privasi</a> tentang cara datamu dipakai.</li>
+    </ul>
+  </article>
+  <article lang="en" data-lang="en" hidden>
+    <h1>Terms of Use</h1>
+    <p>Version 1 · last updated 27 November 2026</p>
+    <ul>
+      <li>You must be 13 or older to have a ROOMZERO account, and the date of birth you give must be true.</li>
+      <li>One person, one account. Stay signed in only on devices you trust.</li>
+      <li>You choose your username once and can't change it. A username another player already has can't be used again.</li>
+      <li>Usernames and profile photos must not be offensive, hateful, sexual, or pretend to be someone else or the ROOMZERO team. We may remove such accounts.</li>
+      <li>Do not cheat, harass other players, or attack or overload the servers.</li>
+      <li>ROOMZERO is free and provided as it is. Online features, cloud saves and the servers can change or stop.</li>
+      <li>You can stop using ROOMZERO and delete your account at any time.</li>
+      <li>See the <a href="../privacy/?lang=en">Privacy Policy</a> for how your data is used.</li>
+    </ul>
+  </article>
+  <p class="lang"><a href="?lang=en" id="other">English</a></p>
+</main>
+<script>
+  const lang = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "id";
+  document.querySelectorAll("[data-lang]").forEach((a) => (a.hidden = a.dataset.lang !== lang));
+  document.documentElement.lang = lang;
+  const o = document.getElementById("other");
+  o.href = "?lang=" + (lang === "en" ? "id" : "en");
+  o.textContent = lang === "en" ? "Bahasa Indonesia" : "English";
+  if (lang === "en") document.title = "Terms of Use · ROOMZERO";
+</script>
+</body>
+</html>
