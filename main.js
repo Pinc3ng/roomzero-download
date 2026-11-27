@@ -120,11 +120,26 @@
     const px = gsap.quickTo(peek, "x", { duration: 0.6, ease: "power3" });
     const py = gsap.quickTo(peek, "y", { duration: 0.6, ease: "power3" });
     gsap.set(peek, { xPercent: -50, yPercent: -50, scale: 0.92 });
-    addEventListener("pointermove", (e) => { px(e.clientX + 200); py(e.clientY); }, { passive: true });
-    floors.querySelectorAll(".floor").forEach((f) => {
-      f.addEventListener("pointerenter", () => { pimg.src = f.dataset.img; gsap.to(peek, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }); });
-      f.addEventListener("pointerleave", () => gsap.to(peek, { opacity: 0, scale: 0.92, duration: 0.3 }));
-    });
+    // Which row is under the pointer is checked on every move AND every scroll: scrolling moves the rows
+    // under a still pointer without firing pointerleave, which left the still stuck on screen.
+    let cx = -1, cy = -1, current = null;
+    const showRow = (f) => {
+      if (f === current) return;
+      current = f;
+      if (f) {
+        pimg.src = f.dataset.img;
+        gsap.to(peek, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out", overwrite: "auto" });
+      } else {
+        gsap.to(peek, { opacity: 0, scale: 0.92, duration: 0.25, overwrite: "auto" });
+      }
+    };
+    const check = () => {
+      const el = cx < 0 ? null : document.elementFromPoint(cx, cy);
+      showRow(el ? el.closest(".floor") : null);
+    };
+    addEventListener("pointermove", (e) => { cx = e.clientX; cy = e.clientY; px(cx + 200); py(cy); check(); }, { passive: true });
+    document.documentElement.addEventListener("pointerleave", () => { cx = -1; showRow(null); });
+    lenis.on("scroll", check);
   }
 
   // Motion: the download arrow drops a little on hover, like a lift arriving.
