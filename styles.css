@@ -43,7 +43,7 @@ h2 { margin: 0; font: 300 clamp(40px, 6vw, 88px)/1 var(--display); font-stretch:
 .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; transform-origin: 60% 40%; }
 .hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,15,.2) 0%, rgba(10,14,15,.1) 40%, var(--ground) 96%); }
 .hero-inner { position: relative; width: min(1200px, 100%); margin-inline: auto; padding: 0 max(24px, env(safe-area-inset-right, 0px)) 64px max(24px, env(safe-area-inset-left, 0px)); display: grid; gap: 22px; }
-.title { margin: 0; font: 200 clamp(56px, 13.5vw, 210px)/.82 var(--display); font-stretch: 125%; letter-spacing: -.035em; white-space: nowrap; }
+.title { margin: 0; font: 200 clamp(44px, 10.2vw, 172px)/.82 var(--display); font-stretch: 125%; letter-spacing: -.035em; white-space: nowrap; }
 .lede { max-width: 46ch; margin: 0; color: var(--text); opacity: .82; font-size: 17px; }
 .quick { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 36px; margin: 10px 0 0; padding: 0; }
 .quick a { display: inline-flex; align-items: baseline; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(216,223,220,.28); font: 400 18px/1 var(--display); font-stretch: 110%; transition: border-color .25s, color .25s; }
