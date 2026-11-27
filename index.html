@@ -4,168 +4,159 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ROOMZERO — Download</title>
-<meta name="description" content="Download ROOMZERO, game survival horror psikologis. Windows, Android, iOS.">
+<meta name="description" content="Download ROOMZERO, game survival horror psikologis untuk Windows, Android dan iOS.">
+<meta name="theme-color" content="#0c1011">
 <meta property="og:title" content="ROOMZERO — Download">
-<meta property="og:description" content="Game survival horror psikologis. Kabur dari fasilitas riset bawah tanah sebelum Subject 0 menemukanmu.">
-<meta property="og:image" content="assets/hero.jpg">
+<meta property="og:description" content="Kabur dari fasilitas riset bawah tanah sebelum Subject 0 menemukanmu. Gratis untuk Windows, Android dan iOS.">
+<meta property="og:image" content="https://pinc3ng.github.io/roomzero-download/assets/hero.jpg">
 <link rel="icon" href="assets/icon.png">
-<style>
-  @font-face { font-family: "Oswald"; src: url("assets/Oswald-Variable.ttf") format("truetype"); font-weight: 200 700; font-display: swap; }
-  @font-face { font-family: "Inter"; src: url("assets/Inter-Variable.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
-  :root {
-    --ink: #0c1011; --panel: #141a1b; --line: #2a3233; --fog: #a4aaa7; --bone: #eee9dc;
-    --red: #b8423a; --red-text: #e8574d;
-  }
-  * { box-sizing: border-box; }
-  html { background: var(--ink); }
-  body { margin: 0; color: var(--bone); font: 400 16px/1.6 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-  a { color: inherit; }
-
-  .hero {
-    position: relative; min-height: 62vh; display: flex; align-items: flex-end;
-    background: linear-gradient(180deg, rgba(12,16,17,.25) 0%, rgba(12,16,17,.55) 55%, var(--ink) 100%), url("assets/hero.jpg") center 40% / cover no-repeat;
-  }
-  .wrap { width: min(1080px, 100% - 40px); margin: 0 auto; }
-  .hero .wrap { padding: 72px 0 40px; }
-  .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
-  .brand img { width: 52px; height: 52px; border-radius: 12px; }
-  .brand span { font: 500 13px/1 "Oswald", sans-serif; letter-spacing: .32em; color: var(--fog); text-transform: uppercase; }
-  h1 { font: 600 clamp(56px, 11vw, 120px)/.92 "Oswald", sans-serif; letter-spacing: .04em; margin: 0; text-transform: uppercase; }
-  .tag { max-width: 560px; margin: 18px 0 0; color: var(--fog); font-size: 18px; }
-  .meta { margin-top: 22px; font: 500 13px/1 "Oswald", sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--fog); }
-  .meta b { color: var(--red-text); font-weight: 500; }
-
-  main .wrap { padding: 8px 0 64px; }
-  .label { font: 500 13px/1 "Oswald", sans-serif; letter-spacing: .28em; text-transform: uppercase; color: var(--fog); margin: 32px 0 16px; }
-  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .card {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 24px;
-    display: flex; flex-direction: column; gap: 14px;
-  }
-  .card.mine { border-color: var(--red); box-shadow: 0 0 0 1px var(--red) inset; }
-  .card h2 { margin: 0; font: 600 26px/1 "Oswald", sans-serif; letter-spacing: .06em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
-  .card h2 svg { width: 24px; height: 24px; fill: var(--bone); flex: none; }
-  .yours { margin-left: auto; font: 500 11px/1 "Oswald", sans-serif; letter-spacing: .2em; color: var(--red-text); display: none; }
-  .card.mine .yours { display: inline; }
-  .file { color: var(--fog); font-size: 14px; font-variant-numeric: tabular-nums; }
-  .btn {
-    display: block; text-align: center; text-decoration: none; padding: 14px 16px; border-radius: 4px;
-    font: 600 16px/1 "Oswald", sans-serif; letter-spacing: .2em; text-transform: uppercase;
-    background: var(--red); color: var(--bone); transition: background .15s;
-  }
-  .btn:hover, .btn:focus-visible { background: #cf4c43; outline: none; }
-  .btn:focus-visible { box-shadow: 0 0 0 3px var(--ink), 0 0 0 5px var(--bone); }
-  .how { margin: 0; padding-left: 18px; color: var(--fog); font-size: 14px; }
-  .how li + li { margin-top: 4px; }
-  .how b { color: var(--bone); font-weight: 500; }
-
-  .about { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; margin-top: 8px; }
-  .about p { color: var(--fog); margin: 0 0 12px; }
-  .facts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-  .facts li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
-  .facts li span:first-child { color: var(--fog); }
-  footer { border-top: 1px solid var(--line); color: var(--fog); font-size: 13px; }
-  footer .wrap { padding: 22px 0 32px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
-
-  @media (max-width: 860px) {
-    .cards, .about { grid-template-columns: 1fr; }
-    .hero { min-height: 48vh; }
-  }
-</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.29/dist/lenis.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="hero">
-  <div class="wrap">
-    <div class="brand"><img src="assets/icon.png" alt=""><span>Survival horror</span></div>
-    <h1>Roomzero</h1>
-    <p class="tag">Kabur dari Kessler Deep Research Annex, fasilitas riset bawah tanah yang ditinggalkan, sementara <b>Subject 0</b> memburumu lewat ventilasi.</p>
-    <div class="meta" id="meta">Versi terbaru</div>
+<a class="skip" href="#download">Langsung ke download</a>
+
+<nav class="nav" id="nav">
+  <a class="nav-brand" href="#top" data-scroll><img src="assets/icon.png" alt=""><span>ROOMZERO</span></a>
+  <div class="nav-links">
+    <a href="#creatures" data-scroll>Makhluk</a>
+    <a href="#maps" data-scroll>Map</a>
+    <a href="#qr" data-scroll>QR</a>
   </div>
+  <a class="nav-cta" href="#download" data-scroll>Download</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-img" aria-hidden="true"></div>
+  <div class="hero-dark" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="eyebrow" data-reveal>Survival horror psikologis</p>
+    <h1 class="hero-title" id="heroTitle">ROOMZERO</h1>
+    <p class="hero-sub" data-reveal>Kessler Deep Research Annex sudah lama ditinggalkan. Tapi kamu tidak sendirian di sini. <b>Subject 0</b> memburumu lewat ventilasi.</p>
+    <div class="hero-actions" data-reveal>
+      <a class="btn btn-primary" id="heroCta" href="#download" data-scroll>Download gratis</a>
+      <a class="btn btn-ghost" href="#qr" data-scroll>Scan QR</a>
+    </div>
+    <p class="hero-meta" id="meta" data-reveal>Windows · Android · iOS</p>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
 </header>
 
 <main>
-  <div class="wrap">
-    <div class="label">Download</div>
-    <div class="cards">
-      <section class="card" id="card-windows">
-        <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3zm0 13 7.5 1.1v-7H3zm8.4 1.2L21 21v-8.5h-9.6zm0-15.4V11.5H21V3z"/></svg>Windows<span class="yours">Perangkatmu</span></h2>
-        <div class="file" data-file="ROOMZERO.exe">ROOMZERO.exe</div>
-        <a class="btn" href="https://github.com/Pinc3ng/roomzero-download/releases/latest/download/ROOMZERO.exe">Download EXE</a>
-        <ol class="how">
-          <li>Jalankan <b>ROOMZERO.exe</b>, tidak perlu install.</li>
-          <li>Kalau muncul "Windows protected your PC", klik <b>More info → Run anyway</b>.</li>
-        </ol>
-      </section>
-
-      <section class="card" id="card-android">
-        <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 9.48 19.44 6.3a.5.5 0 0 0-.87-.5l-1.87 3.23a11.4 11.4 0 0 0-9.4 0L5.43 5.8a.5.5 0 0 0-.87.5L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52M7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5m10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5"/></svg>Android<span class="yours">Perangkatmu</span></h2>
-        <div class="file" data-file="ROOMZERO.apk">ROOMZERO.apk</div>
-        <a class="btn" href="https://github.com/Pinc3ng/roomzero-download/releases/latest/download/ROOMZERO.apk">Download APK</a>
-        <ol class="how">
-          <li>Buka file APK, izinkan <b>Install dari sumber tidak dikenal</b>.</li>
-          <li>Sudah punya versi lama dari sumber lain? Uninstall dulu.</li>
-        </ol>
-      </section>
-
-      <section class="card" id="card-ios">
-        <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46a4.2 4.2 0 0 0-3.32-1.8c-1.4-.14-2.75.83-3.46.83-.72 0-1.82-.81-3-.79a4.4 4.4 0 0 0-3.72 2.27c-1.6 2.77-.41 6.86 1.14 9.1.76 1.1 1.66 2.33 2.84 2.29 1.14-.05 1.57-.74 2.95-.74 1.37 0 1.76.74 2.97.71 1.23-.02 2-1.11 2.75-2.22a9.9 9.9 0 0 0 1.25-2.57 3.97 3.97 0 0 1-2.36-3.62M14.1 5.85A3.9 3.9 0 0 0 15 3a4 4 0 0 0-2.6 1.35 3.8 3.8 0 0 0-.94 2.78 3.3 3.3 0 0 0 2.64-1.28"/></svg>iOS<span class="yours">Perangkatmu</span></h2>
-        <div class="file" data-file="ROOMZERO-unsigned.ipa">ROOMZERO-unsigned.ipa</div>
-        <a class="btn" href="https://github.com/Pinc3ng/roomzero-download/releases/latest/download/ROOMZERO-unsigned.ipa">Download IPA</a>
-        <ol class="how">
-          <li>Install lewat <b>AltStore</b> atau <b>Sideloadly</b> dengan Apple ID gratis.</li>
-          <li>Dengan Apple ID gratis, pasang ulang tiap 7 hari.</li>
-        </ol>
-      </section>
-    </div>
-
-    <div class="label">Tentang game</div>
-    <div class="about">
-      <div>
-        <p>ROOMZERO adalah game survival horror psikologis. Jelajahi fasilitas yang gelap, pecahkan teka-teki, kumpulkan dokumen, dan sembunyi di loker saat makhluk itu mendekat. Ruangan dan kode berubah setiap kali main.</p>
-        <p>Main sendirian atau co-op online bersama teman lewat kode room, atau lewat Wi-Fi yang sama.</p>
+  <section class="section" id="download">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Pilih perangkatmu</p>
+        <h2 class="section-title" data-split>Download</h2>
       </div>
-      <ul class="facts">
-        <li><span>Map</span><span>10, termasuk kampanye cerita</span></li>
-        <li><span>Mode</span><span>Solo · co-op 2–3 pemain</span></li>
-        <li><span>Bahasa</span><span>ID · EN · ES · PT · FR</span></li>
-        <li><span>Platform</span><span>Windows · Android · iOS</span></li>
+      <div class="cards" id="cards">
+        <article class="card" id="card-windows" data-platform="windows">
+          <div class="card-top">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3zm0 13 7.5 1.1v-7H3zm8.4 1.2L21 21v-8.5h-9.6zm0-15.4V11.5H21V3z"/></svg>
+            <span class="badge">Perangkatmu</span>
+          </div>
+          <h3>Windows</h3>
+          <p class="file" data-file="ROOMZERO.exe">ROOMZERO.exe</p>
+          <ol class="steps">
+            <li>Jalankan <b>ROOMZERO.exe</b>, tidak perlu install.</li>
+            <li>Muncul "Windows protected your PC"? Klik <b>More info</b>, lalu <b>Run anyway</b>.</li>
+          </ol>
+          <a class="btn btn-primary btn-block" href="https://github.com/Pinc3ng/roomzero-download/releases/latest/download/ROOMZERO.exe" data-dl>Download EXE</a>
+        </article>
+
+        <article class="card" id="card-android" data-platform="android">
+          <div class="card-top">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 9.48 19.44 6.3a.5.5 0 0 0-.87-.5l-1.87 3.23a11.4 11.4 0 0 0-9.4 0L5.43 5.8a.5.5 0 0 0-.87.5L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52M7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5m10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5"/></svg>
+            <span class="badge">Perangkatmu</span>
+          </div>
+          <h3>Android</h3>
+          <p class="file" data-file="ROOMZERO.apk">ROOMZERO.apk</p>
+          <ol class="steps">
+            <li>Buka file APK, izinkan <b>Install dari sumber tidak dikenal</b>.</li>
+            <li>Sudah ada versi lama dari sumber lain? Uninstall dulu.</li>
+          </ol>
+          <a class="btn btn-primary btn-block" href="https://github.com/Pinc3ng/roomzero-download/releases/latest/download/ROOMZERO.apk" data-dl>Download APK</a>
+        </article>
+
+        <article class="card" id="card-ios" data-platform="ios">
+          <div class="card-top">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46a4.2 4.2 0 0 0-3.32-1.8c-1.4-.14-2.75.83-3.46.83-.72 0-1.82-.81-3-.79a4.4 4.4 0 0 0-3.72 2.27c-1.6 2.77-.41 6.86 1.14 9.1.76 1.1 1.66 2.33 2.84 2.29 1.14-.05 1.57-.74 2.95-.74 1.37 0 1.76.74 2.97.71 1.23-.02 2-1.11 2.75-2.22a9.9 9.9 0 0 0 1.25-2.57 3.97 3.97 0 0 1-2.36-3.62M14.1 5.85A3.9 3.9 0 0 0 15 3a4 4 0 0 0-2.6 1.35 3.8 3.8 0 0 0-.94 2.78 3.3 3.3 0 0 0 2.64-1.28"/></svg>
+            <span class="badge">Perangkatmu</span>
+          </div>
+          <h3>iOS</h3>
+          <p class="file" data-file="ROOMZERO-unsigned.ipa">ROOMZERO-unsigned.ipa</p>
+          <ol class="steps">
+            <li>Install lewat <b>AltStore</b> atau <b>Sideloadly</b> dengan Apple ID gratis.</li>
+            <li>Dengan Apple ID gratis, pasang ulang tiap 7 hari.</li>
+          </ol>
+          <a class="btn btn-primary btn-block" href="https://github.com/Pinc3ng/roomzero-download/releases/latest/download/ROOMZERO-unsigned.ipa" data-dl>Download IPA</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="creatures" id="creatures">
+    <div class="creatures-pin">
+      <div class="wrap section-head">
+        <p class="eyebrow" data-reveal>Yang mengintai di bawah</p>
+        <h2 class="section-title" data-split>Makhluk</h2>
+      </div>
+      <div class="creature-track" id="creatureTrack">
+        <figure class="creature"><img src="assets/creatures/zombie.png" alt="The Hollow" loading="lazy"><figcaption><b>The Hollow</b><span>Subject 0. Kurus, cepat, dan selalu lapar.</span></figcaption></figure>
+        <figure class="creature"><img src="assets/creatures/nurse.png" alt="The Nurse" loading="lazy"><figcaption><b>The Nurse</b><span>Diam saat kamu menatapnya. Bergerak saat kamu berkedip.</span></figcaption></figure>
+        <figure class="creature"><img src="assets/creatures/butcher.png" alt="The Butcher" loading="lazy"><figcaption><b>The Butcher</b><span>Lambat. Pintu tertutup tidak menghentikannya.</span></figcaption></figure>
+        <figure class="creature"><img src="assets/creatures/crawler.png" alt="The Crawler" loading="lazy"><figcaption><b>The Crawler</b><span>Buta. Menemukanmu lewat suara.</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="maps">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>10 lokasi, ruangan dan kode berubah tiap main</p>
+        <h2 class="section-title" data-split>Map</h2>
+      </div>
+      <div class="map-grid" id="mapGrid"></div>
+      <ul class="facts" data-reveal>
+        <li><b>Solo</b> atau <b>co-op 2–3 pemain</b> lewat kode room atau Wi-Fi yang sama</li>
+        <li>Loker untuk sembunyi · teka-teki · notebook berisi tujuan dan dokumen · 2 ending</li>
+        <li>Orang pertama atau ketiga · 5 bahasa: ID, EN, ES, PT, FR</li>
       </ul>
     </div>
-  </div>
+  </section>
+
+  <section class="section qr" id="qr">
+    <div class="wrap qr-wrap">
+      <div class="qr-text">
+        <p class="eyebrow" data-reveal>Bagikan ke teman</p>
+        <h2 class="section-title" data-split>Scan untuk download</h2>
+        <p class="qr-sub" data-reveal>Arahkan kamera HP ke kode ini. Halaman ini terbuka, lalu pilih file untuk perangkatmu.</p>
+        <div class="hero-actions" data-reveal>
+          <a class="btn btn-ghost" href="assets/qr.png" download="ROOMZERO-QR.png">Simpan gambar QR</a>
+          <button class="btn btn-ghost" id="copyLink" type="button">Salin link</button>
+        </div>
+      </div>
+      <div class="qr-card" id="qrCard">
+        <img src="assets/qr.svg" alt="QR code ke pinc3ng.github.io/roomzero-download" width="320" height="320">
+        <span>pinc3ng.github.io/roomzero-download</span>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer>
-  <div class="wrap">
+<footer class="footer">
+  <div class="wrap footer-wrap">
     <span>Dibuat oleh Vincent, Leonardo Angkasa dan Giliant Chandra.</span>
-    <span><a href="https://github.com/Pinc3ng/roomzero-download/releases/latest">Semua file di GitHub</a></span>
+    <a href="https://github.com/Pinc3ng/roomzero-download/releases/latest">Semua file di GitHub</a>
   </div>
 </footer>
 
-<script>
-  // Highlight the visitor's own platform.
-  const ua = navigator.userAgent;
-  const mine = /android/i.test(ua) ? "android"
-    : (/iphone|ipad|ipod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) ? "ios"
-    : /windows/i.test(ua) ? "windows" : "";
-  if (mine) {
-    const card = document.getElementById("card-" + mine);
-    card.classList.add("mine");
-    card.parentNode.prepend(card);
-  }
-  // File sizes, version and date from the latest release (public API, no login).
-  fetch("https://api.github.com/repos/Pinc3ng/roomzero-download/releases/latest")
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(rel => {
-      for (const a of rel.assets || []) {
-        const el = document.querySelector('[data-file="' + a.name + '"]');
-        if (el) el.textContent = a.name + " · " + (a.size / 1048576).toFixed(0) + " MB";
-      }
-      const d = new Date(rel.published_at || rel.created_at);
-      const date = d.toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" });
-      document.getElementById("meta").innerHTML = "Versi <b></b> · diperbarui " + date;
-      document.querySelector("#meta b").textContent = (rel.name || rel.tag_name).replace(/^ROOMZERO\s*/i, "");
-    })
-    .catch(() => {});
-</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.29/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@12.43.0/dist/motion.js"></script>
+<script src="main.js"></script>
 </body>
 </html>

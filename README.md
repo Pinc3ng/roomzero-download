@@ -12,6 +12,10 @@ Direct links to the newest build:
 | Android | [ROOMZERO.apk](https://github.com/Pinc3ng/roomzero-download/releases/latest/download/ROOMZERO.apk) |
 | iOS (sideload) | [ROOMZERO-unsigned.ipa](https://github.com/Pinc3ng/roomzero-download/releases/latest/download/ROOMZERO-unsigned.ipa) |
 
+Scan to open the page on a phone:
+
+<img src="assets/qr.png" alt="QR code to the ROOMZERO download page" width="220">
+
 The builds are updated automatically whenever the game changes. This repository only holds the download page;
 the game's source code is private.
 
