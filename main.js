@@ -59,9 +59,10 @@
 
   const copy = document.getElementById("copy");
   copy.addEventListener("click", () => {
-    navigator.clipboard.writeText("https://pinc3ng.github.io/roomzero-download/")
+    const here = location.origin + location.pathname.replace(/index\.html$/, "");          // GitHub Pages or Vercel, whichever is open
+    navigator.clipboard.writeText(here)
       .then(() => { copy.textContent = "Tersalin"; setTimeout(() => (copy.textContent = "Salin tautan"), 1600); })
-      .catch(() => { copy.textContent = "pinc3ng.github.io/roomzero-download"; });
+      .catch(() => { copy.textContent = here.replace(/^https?:\/\//, ""); });
   });
 
   // Residents: the sticky portrait follows whichever entry is in the middle of the screen.
